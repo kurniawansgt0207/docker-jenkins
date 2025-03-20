@@ -1,64 +1,11 @@
 pipeline {
-    agent {
-        label 'docker-agent'
-    }
-
-    environment {
-        IMAGE_NAME = "vue-consume-api"
-        DOCKER_HUB_REPO = "sigitkurniawan0207/vue-consume-api"
-    }
-
+    agent { label 'docker-agent' }
     stages {
-        stage('ke-1') {
+        stage('Check Node') {
             steps {
-                echo "test"
+                sh 'hostname'
+                sh 'docker --version'
             }
         }
-
-        stage('ke-2') {
-            steps {
-                echo "test-2"
-            }
-        }
-        
-        /*stage('Checkout') {
-            steps {
-                script {
-                    git branch: 'main', credentialsId: 'ssh-key-github', url: 'git@github.com:kurniawansgt0207/vue-consume-api.git'
-                }
-            }
-        }
-
-        stage('Build Docker Image') {
-            steps {
-                script {
-                    docker.build("${DOCKER_HUB_REPO}:latest")
-                }
-            }
-        }
-
-        stage('Login to Docker Hub') {
-            steps {
-                script {
-                    withCredentials([usernamePassword(credentialsId: 'docker-hub-access', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
-                        sh "echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin"
-                    }
-                }
-            }
-        }
-
-        stage('Push Image to Docker Hub') {
-            steps {
-                script {
-                    docker.image("${DOCKER_HUB_REPO}:latest").push()
-                }
-            }
-        }
-
-        stage('Cleanup') {
-            steps {
-                sh "docker rmi ${DOCKER_HUB_REPO}:latest"
-            }
-        }*/
     }
 }
