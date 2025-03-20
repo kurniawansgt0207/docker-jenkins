@@ -9,7 +9,15 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
+        stage('ke-1') {
+            echo "test"
+        }
+
+        stage('ke-2') {
+            echo "test-2"
+        }
+        
+        /*stage('Checkout') {
             steps {
                 script {
                     git branch: 'main', credentialsId: 'ssh-key-github', url: 'git@github.com:kurniawansgt0207/vue-consume-api.git'
@@ -47,6 +55,6 @@ pipeline {
             steps {
                 sh "docker rmi ${DOCKER_HUB_REPO}:latest"
             }
-        }
+        }*/
     }
 }
