@@ -10,11 +10,15 @@ pipeline {
 
     stages {
         stage('ke-1') {
-            echo "test"
+            steps {
+                echo "test"
+            }
         }
 
         stage('ke-2') {
-            echo "test-2"
+            steps {
+                echo "test-2"
+            }
         }
         
         /*stage('Checkout') {
